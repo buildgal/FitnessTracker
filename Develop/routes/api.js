@@ -1,3 +1,5 @@
+const router = require("express").Router();
+const 
 const API = {
   async getLastWorkout() {
     let res;
