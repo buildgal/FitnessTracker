@@ -1,5 +1,8 @@
-const router = require("express").Router();
-const 
+
+const workout = require("../models/fitness.js");
+//figure out how to add the model to the work 
+
+
 const API = {
   async getLastWorkout() {
     let res;
