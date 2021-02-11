@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const logger = require("morgan");
 const path = require("path");
+const apiroutes = require("./routes/aproutes.js");
 
 const PORT = process.env.PORT || 3000;
 
@@ -14,11 +15,12 @@ app.use(express.static("public"));
 
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/workout", {
   useNewUrlParser: true,
-  useFindAndModify: false
+  useFindAndModify: false,
+  useUnifiedTopology: true
 });
 
 // routes
-
+app.use(apiroutes)
 
 app.get("/",(req, res)=>{
     res.sendFile(path.join(__dirname + "/public/index.html"));

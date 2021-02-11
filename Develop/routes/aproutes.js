@@ -1,7 +1,7 @@
 const router = require("express").Router();
-const workout = require("../models/fitness.js");
+const workouts = require("../models/fitness.js");
 
-router.post("/api/index", ({ body }, res) => {
+router.post("/api/workouts", ({ body }, res) => {
   workouts.create(body)
     .then(dbworkouts => {
       res.json(dbworkouts);
@@ -11,7 +11,9 @@ router.post("/api/index", ({ body }, res) => {
     });
 });
 
-router.post("/api/excercise", ({ body }, res) => {
+//match to the front api routes 
+//cannot put + id to express uses :id
+router.put("/api/workouts/:id", ({ body }, res) => {
   workouts.insertMany(body)
     .then(dbworkouts => {
       res.json(dbworkouts);
@@ -31,5 +33,21 @@ router.get("/api/workouts", (req, res) => {
       res.status(400).json(err);
     });
 });
+
+router.get("/api/workouts/range", (req, res) => {
+    workouts.find({})
+      .sort({ date: -1 })
+      .then(dbworkouts => {
+        res.json(dbworkouts);
+      })
+      .catch(err => {
+        res.status(400).json(err);
+      });
+  });
+
+  /**
+   *
+   */
+  
 
 module.exports = router;
