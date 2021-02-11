@@ -4,11 +4,22 @@ const workouts = require("../models/fitness.js");
 router.post("/api/workouts", ({ body }, res) => {
   workouts.create(body)
     .then(dbworkouts => {
-      res.json(dbworkouts);
+     res.json(dbworkouts);
     })
     .catch(err => {
       res.status(400).json(err);
     });
+});
+
+router.get("/api/workouts", ({ body }, res) => {
+  workouts.find({})
+  .sort({ date: -1 })
+  .then(dbworkouts => {
+    res.json(dbworkouts);
+  })
+  .catch(err => {
+    res.status(400).json(err);
+  });
 });
 
 //match to the front api routes 
@@ -23,7 +34,7 @@ router.put("/api/workouts/:id", ({ body }, res) => {
     });
 });
 
-router.get("/api/workouts", (req, res) => {
+router.post("/api/workouts", (req, res) => {
   workouts.find({})
     .sort({ date: -1 })
     .then(dbworkouts => {
@@ -45,9 +56,5 @@ router.get("/api/workouts/range", (req, res) => {
       });
   });
 
-  /**
-   *
-   */
-  
 
 module.exports = router;
