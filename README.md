@@ -24,7 +24,7 @@
   ## Usage
    This application is used to create workouts and keep track of which excercises and duration.
 
-   
+
 
   ## License 
   MIT
