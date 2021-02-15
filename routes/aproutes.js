@@ -24,12 +24,10 @@ router.get("/api/workouts", ({ body }, res) => {
 
 //match to the front api routes 
 //cannot put + id to express uses :id
-router.put("/api/workouts/:id", (req, res) => {
-  const id= req.params.id;
-  const workout= req.body;
+router.put("/api/workouts/:id", ({body, params}, res) => {
   workouts.findByIdAndUpdate(
-    id,
-    {$push: {dbworkouts: workout}},
+    params.id,
+    {$push: {exercises: body}},
     {new:true})
    
     .then(dbworkouts => {

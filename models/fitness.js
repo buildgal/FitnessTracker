@@ -9,16 +9,13 @@ const workoutsSchema = new Schema({
   },
 
     exercises:[{
-      type: {type: String}, //type is an object, orange is mongoose schema 
+      type: {type: String},
       name: String,
       duration: Number,
       weight: Number,
       reps: Number,
       sets: Number,
       distance: Number,
-      
-      //check out the read me where it discusses duration 
-
     }]
   });
   /*
