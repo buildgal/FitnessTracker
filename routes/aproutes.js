@@ -24,12 +24,12 @@ router.get("/api/workouts", ({ body }, res) => {
 
 //match to the front api routes 
 //cannot put + id to express uses :id
-router.put("/api/workouts/:id", ({ body }, res) => {
+router.put("/api/workouts/:id", (req, res) => {
   const id= req.params.id;
   const workout= req.body;
   workouts.findByIdAndUpdate(
     id,
-    {$push: {workouts: workout}},
+    {$push: {wdborkouts: workout}},
     {new:true})
    
     .then(dbworkouts => {
@@ -65,4 +65,3 @@ router.get("/api/workouts/range", (req, res) => {
 
 
 module.exports = router;
-//reduce 

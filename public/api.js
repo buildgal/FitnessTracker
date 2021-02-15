@@ -45,6 +45,3 @@ const API = {
   },
 };
 
-//there are 4 data request fetch 
-//front end for client side request
-//when you don't pass a method and just a URL it knows to default to get  
