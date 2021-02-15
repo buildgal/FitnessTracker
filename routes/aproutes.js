@@ -25,9 +25,16 @@ router.get("/api/workouts", ({ body }, res) => {
 //match to the front api routes 
 //cannot put + id to express uses :id
 router.put("/api/workouts/:id", ({ body }, res) => {
-  workouts.insertMany(body)
+  const id= req.params.id;
+  const workout= req.body;
+  workouts.findByIdAndUpdate(
+    id,
+    {$push: {workouts: workout}},
+    {new:true})
+   
     .then(dbworkouts => {
       res.json(dbworkouts);
+      console.log(data);
     })
     .catch(err => {
       res.status(400).json(err);
@@ -58,3 +65,4 @@ router.get("/api/workouts/range", (req, res) => {
 
 
 module.exports = router;
+//reduce 

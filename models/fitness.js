@@ -16,9 +16,18 @@ const workoutsSchema = new Schema({
       reps: Number,
       sets: Number,
       distance: Number,
+      
+      //check out the read me where it discusses duration 
 
     }]
   });
+  workoutsSchema.virtual(
+    "totalDuration").get(function(){excercise.forEach(function(excercise){
+      excercise.duration
+    })
+      return ${this.total}
+      //you can use for each or math to get all the total durations for each amount 
+    })
 //{} these brackets add rules 
 const workouts= mongoose.model("workouts", workoutsSchema);
 
