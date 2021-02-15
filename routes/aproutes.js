@@ -29,7 +29,7 @@ router.put("/api/workouts/:id", (req, res) => {
   const workout= req.body;
   workouts.findByIdAndUpdate(
     id,
-    {$push: {wdborkouts: workout}},
+    {$push: {dbworkouts: workout}},
     {new:true})
    
     .then(dbworkouts => {
